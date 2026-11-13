@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Respawn Expo 2027 — Salon du jeu vidéo indépendant et rétro à Lens</title>
+  <meta name="description" content="Respawn Expo, le salon du jeu vidéo indépendant et rétro des Hauts-de-France : conférences, tournois, ateliers et concerts chiptune les 13 et 14 mars 2027 à Lens.">
+
+  <!-- Une seule famille Google Fonts (titres pixel), le texte courant utilise la police système -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap">
+
+  <!-- Un SEUL fichier CSS lié : main.css déclare l'ordre des layers et importe le reste -->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- Lien d'évitement : premier élément focusable, apparaît au clavier -->
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <!-- ============================================================
+       EN-TÊTE : logo + navigation par ancres + bascule de thème CSS-only
+       ============================================================ -->
+  <header class="site-header">
+    <div class="site-header__inner container">
+      <a href="#top" class="site-header__logo">
+        <span class="site-header__logo-mark" aria-hidden="true">▶</span> Respawn Expo
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <ul class="nav__list" role="list">
+          <li><a class="nav__link" href="#programme">Programme</a></li>
+          <li><a class="nav__link" href="#intervenants">Intervenants</a></li>
+          <li><a class="nav__link" href="#billetterie">Billetterie</a></li>
+          <li><a class="nav__link" href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <!-- Bascule de thème sans JavaScript : :root:has(#theme-toggle:checked) dans tokens.css -->
+      <label class="theme-toggle">
+        <input class="theme-toggle__input" type="checkbox" id="theme-toggle">
+        <span class="theme-toggle__label">Inverser le thème</span>
+      </label>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero" aria-labelledby="hero-titre" id="contenu">
+      <div class="hero__inner container">
+        <p class="hero__kicker">Salon du jeu vidéo indé &amp; rétro · 3<sup>e</sup> édition</p>
+        <h1 class="hero__title" id="hero-titre">Respawn Expo</h1>
+        <div class="hero__info">
+          <p class="hero__meta">
+            <time datetime="2027-03-13">13</time>–<time datetime="2027-03-14">14 mars 2027</time>
+            · Halle Arkadia, Lens (62)
+          </p>
+          <p class="hero__pitch">Deux jours pour jouer aux pépites des studios indépendants, défier des inconnus sur des bornes d'arcade et rencontrer celles et ceux qui fabriquent les jeux.</p>
+        </div>
+        <div class="hero__actions">
+          <a href="#billetterie" class="btn btn--primary">Réserver ma place</a>
+          <a href="#programme" class="btn btn--ghost">Voir le programme</a>
+          <p class="hero__coin" aria-hidden="true">Insert coin</p>
+        </div>
+        <img class="hero__media" src="img/manette.svg" alt="" width="480" height="280">
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PROGRAMME EN GRILLE : 2 jours, 8 créneaux
+         grid-template-areas (layout.css) + subgrid pour aligner les horaires
+         ============================================================ -->
+    <section id="programme" class="section" aria-labelledby="programme-titre">
+      <div class="programme container">
+        <div class="programme__head">
+          <h2 id="programme-titre">Programme</h2>
+          <p class="section__intro">Trois espaces : la Scène Arcade pour les talks et concerts, l'Arène pour les tournois, la Salle Atelier pour mettre les mains dans le code.</p>
+        </div>
+
+        <div class="day day--1">
+          <h3 class="day__title">Samedi <time datetime="2027-03-13">13 mars</time></h3>
+          <ol class="day__list" role="list">
+            <li class="slot" id="slot-1">
+              <time class="slot__time" datetime="2027-03-13T10:00">10h00</time>
+              <p class="slot__title">Ouverture des portes et free play sur 60 bornes</p>
+              <p class="slot__place">Hall principal</p>
+            </li>
+            <li class="slot" id="slot-2">
+              <time class="slot__time" datetime="2027-03-13T11:00">11h00</time>
+              <p class="slot__title">Dessiner avec 16 couleurs : le pixel art aujourd'hui</p>
+              <p class="slot__place">Scène Arcade · Léa Moreau</p>
+            </li>
+            <li class="slot" id="slot-3">
+              <time class="slot__time" datetime="2027-03-13T14:00">14h00</time>
+              <p class="slot__title">Tournoi rétro de course en kart, phases de poules</p>
+              <p class="slot__place">Arène · commenté par Hugo Martin</p>
+            </li>
+            <li class="slot" id="slot-4">
+              <time class="slot__time" datetime="2027-03-13T16:30">16h30</time>
+              <p class="slot__title">Concert chiptune « 8 bits, 1 000 watts »</p>
+              <p class="slot__place">Scène Arcade · Thomas Leclercq</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="day day--2">
+          <h3 class="day__title">Dimanche <time datetime="2027-03-14">14 mars</time></h3>
+          <ol class="day__list" role="list">
+            <li class="slot" id="slot-5">
+              <time class="slot__time" datetime="2027-03-14T10:30">10h30</time>
+              <p class="slot__title">Atelier : ton premier jeu de plateforme avec Godot</p>
+              <p class="slot__place">Salle Atelier · Mei Lin</p>
+            </li>
+            <li class="slot" id="slot-6">
+              <time class="slot__time" datetime="2027-03-14T13:00">13h00</time>
+              <p class="slot__title">Speedrun en direct : battre le record en public</p>
+              <p class="slot__place">Arène · Inès Dufour</p>
+            </li>
+            <li class="slot" id="slot-7">
+              <time class="slot__time" datetime="2027-03-14T15:00">15h00</time>
+              <p class="slot__title">Game design : pourquoi le premier niveau compte autant</p>
+              <p class="slot__place">Scène Arcade · Karim Benali</p>
+            </li>
+            <li class="slot" id="slot-8">
+              <time class="slot__time" datetime="2027-03-14T17:00">17h00</time>
+              <p class="slot__title">Keynote de clôture et annonce surprise</p>
+              <p class="slot__place">Scène Arcade · Sofia Ricci</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         INTERVENANTS : grille de 6 cartes alignées en subgrid
+         + bandeau « invitée d'honneur » : 1er contexte de la container
+         query de .card (large en tablette/desktop → carte horizontale)
+         ============================================================ -->
+    <section id="intervenants" class="section section--alt" aria-labelledby="intervenants-titre">
+      <div class="speakers container">
+        <h2 id="intervenants-titre">Intervenants</h2>
+        <p class="section__intro">Développeuses, artistes, joueurs et joueuses : ils et elles montent sur scène pendant tout le week-end.</p>
+
+        <div class="spotlight">
+          <article class="card card--featured">
+            <img class="card__media" src="img/sofia-ricci.svg" width="320" height="320" alt="Portrait pixel art de Sofia Ricci : cheveux vert fluo, haut violet foncé, sur fond rose.">
+            <h3 class="card__name">Sofia Ricci <span class="card__badge">Invitée d'honneur</span></h3>
+            <p class="card__role">Directrice créative, studio Brume Nord</p>
+            <p class="card__bio">Autrice de la série d'aventure « Moonhollow », vendue à plus d'un million d'exemplaires, Sofia a commencé en modifiant des niveaux de jeux rétro dans sa chambre. Elle revient sur quinze ans de prototypes ratés et annonce le prochain projet du studio.</p>
+            <a class="card__link" href="#slot-8">Voir sa session<span class="u-visually-hidden"> : keynote de Sofia Ricci</span></a>
+          </article>
+        </div>
+
+        <ul class="speakers__list" role="list">
+          <li class="speakers__item">
+            <article class="card">
+              <img class="card__media" src="img/lea-moreau.svg" width="320" height="320" alt="Portrait pixel art de Léa Moreau : cheveux violets, t-shirt rose, sur fond jaune.">
+              <h3 class="card__name">Léa Moreau</h3>
+              <p class="card__role">Pixel artiste</p>
+              <p class="card__bio">Elle dessine les décors de jeux indépendants avec des palettes de 16 couleurs maximum.</p>
+              <a class="card__link" href="#slot-2">Voir sa session<span class="u-visually-hidden"> : Léa Moreau</span></a>
+            </article>
+          </li>
+          <li class="speakers__item">
+            <article class="card">
+              <img class="card__media" src="img/karim-benali.svg" width="320" height="320" alt="Portrait pixel art de Karim Benali : cheveux bruns, t-shirt bleu canard, sur fond vert pomme.">
+              <h3 class="card__name">Karim Benali</h3>
+              <p class="card__role">Game designer, Studio Taupe</p>
+              <p class="card__bio">Karim conçoit des jeux de réflexion depuis dix ans. Son dernier titre, un puzzle-game sur le temps qui recule, a été récompensé dans plusieurs festivals européens. Il démonte, niveau par niveau, la manière dont un jeu apprend ses règles au joueur.</p>
+              <a class="card__link" href="#slot-7">Voir sa session<span class="u-visually-hidden"> : Karim Benali</span></a>
+            </article>
+          </li>
+          <li class="speakers__item">
+            <article class="card">
+              <img class="card__media" src="img/ines-dufour.svg" width="320" height="320" alt="Portrait pixel art d'Inès Dufour : cheveux roux, t-shirt vert, sur fond bleu ciel.">
+              <h3 class="card__name">Inès Dufour</h3>
+              <p class="card__role">Speedrunneuse</p>
+              <p class="card__bio">Détentrice de trois records du monde sur des jeux de plateforme des années 90.</p>
+              <a class="card__link" href="#slot-6">Voir sa session<span class="u-visually-hidden"> : Inès Dufour</span></a>
+            </article>
+          </li>
+          <li class="speakers__item">
+            <article class="card">
+              <img class="card__media" src="img/thomas-leclercq.svg" width="320" height="320" alt="Portrait pixel art de Thomas Leclercq : cheveux blonds, t-shirt noir, sur fond rose.">
+              <h3 class="card__name">Thomas Leclercq</h3>
+              <p class="card__role">Compositeur chiptune</p>
+              <p class="card__bio">Il compose sur de vieilles consoles portables et a signé la bande-son d'une dizaine de jeux indépendants. Son concert du samedi mêle musique 8 bits et projections en direct.</p>
+              <a class="card__link" href="#slot-4">Voir sa session<span class="u-visually-hidden"> : Thomas Leclercq</span></a>
+            </article>
+          </li>
+          <li class="speakers__item">
+            <article class="card">
+              <img class="card__media" src="img/mei-lin.svg" width="320" height="320" alt="Portrait pixel art de Mei Lin : cheveux noirs, t-shirt violet, sur fond jaune.">
+              <h3 class="card__name">Mei Lin</h3>
+              <p class="card__role">Développeuse et formatrice Godot</p>
+              <p class="card__bio">Mei anime des ateliers pour débutants dans toute la région. Repartez avec un jeu qui tourne.</p>
+              <a class="card__link" href="#slot-5">Voir sa session<span class="u-visually-hidden"> : Mei Lin</span></a>
+            </article>
+          </li>
+          <li class="speakers__item">
+            <article class="card">
+              <img class="card__media" src="img/hugo-martin.svg" width="320" height="320" alt="Portrait pixel art d'Hugo Martin : cheveux châtains, t-shirt rose, sur fond bleu ciel.">
+              <h3 class="card__name">Hugo Martin</h3>
+              <p class="card__role">Commentateur e-sport</p>
+              <p class="card__bio">La voix des tournois rétro du Nord. Il commente le tournoi de kart du samedi après-midi.</p>
+              <a class="card__link" href="#slot-3">Voir sa session<span class="u-visually-hidden"> : Hugo Martin</span></a>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BILLETTERIE : 3 offres, celle qui contient .offer__badge est
+         mise en avant automatiquement grâce à :has()
+         ============================================================ -->
+    <section id="billetterie" class="section" aria-labelledby="billetterie-titre">
+      <div class="container">
+        <h2 id="billetterie-titre">Billetterie</h2>
+        <p class="section__intro">Billets électroniques, à présenter sur téléphone à l'entrée. Gratuit pour les moins de 8 ans.</p>
+
+        <ul class="offers" role="list">
+          <li class="offer">
+            <h3 class="offer__name">Pass 1 jour</h3>
+            <p class="offer__price"><span class="offer__amount">18 €</span> / personne</p>
+            <ul class="offer__features">
+              <li>Accès au salon le samedi <strong>ou</strong> le dimanche</li>
+              <li>Free play sur toutes les bornes</li>
+              <li>Accès aux conférences</li>
+            </ul>
+            <a class="btn btn--primary offer__cta" href="mailto:billetterie@respawn-expo.example?subject=Pass%201%20jour">Choisir ce pass<span class="u-visually-hidden"> : Pass 1 jour</span></a>
+          </li>
+          <li class="offer">
+            <p class="offer__badge">Le plus choisi</p>
+            <h3 class="offer__name">Pass week-end</h3>
+            <p class="offer__price"><span class="offer__amount">29 €</span> / personne</p>
+            <ul class="offer__features">
+              <li>Accès les deux jours</li>
+              <li>Free play sur toutes les bornes</li>
+              <li>Inscription au tournoi de kart</li>
+              <li>Accès au concert chiptune</li>
+            </ul>
+            <a class="btn btn--primary offer__cta" href="mailto:billetterie@respawn-expo.example?subject=Pass%20week-end">Choisir ce pass<span class="u-visually-hidden"> : Pass week-end</span></a>
+          </li>
+          <li class="offer">
+            <h3 class="offer__name">Pass Player One</h3>
+            <p class="offer__price"><span class="offer__amount">59 €</span> / personne</p>
+            <ul class="offer__features">
+              <li>Tout le Pass week-end</li>
+              <li>Entrée coupe-file à 9h30</li>
+              <li>Place réservée à l'atelier Godot</li>
+              <li>Rencontre avec Sofia Ricci et affiche dédicacée</li>
+            </ul>
+            <a class="btn btn--primary offer__cta" href="mailto:billetterie@respawn-expo.example?subject=Pass%20Player%20One">Choisir ce pass<span class="u-visually-hidden"> : Pass Player One</span></a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FAQ : <details>/<summary>, aucun JavaScript
+         + encart « contact accueil » : 2e contexte de la container query
+         de .card (étroit en desktop, large en tablette)
+         ============================================================ -->
+    <section id="faq" class="section section--alt" aria-labelledby="faq-titre">
+      <div class="faq-layout container">
+        <h2 class="faq-layout__title" id="faq-titre">Questions fréquentes</h2>
+        <div class="faq">
+          <details class="faq__item">
+            <summary class="faq__question">Faut-il apporter sa console ou sa manette ?</summary>
+            <p class="faq__answer">Non : toutes les bornes et consoles sont fournies. Vous pouvez venir avec votre manette pour le tournoi de kart, elle sera vérifiée à l'accueil de l'Arène.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">Le salon est-il accessible en fauteuil roulant ?</summary>
+            <p class="faq__answer">Oui. La Halle Arkadia est de plain-pied, une borne sur cinq est réglable en hauteur et la Scène Arcade dispose d'un espace réservé avec boucle magnétique.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">Puis-je revendre ou transmettre mon billet ?</summary>
+            <p class="faq__answer">Oui, gratuitement, jusqu'au 12 mars 2027 depuis votre espace billetterie. Le nouveau nom est imprimé sur le billet.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">Comment venir à la Halle Arkadia ?</summary>
+            <p class="faq__answer">À 10 minutes à pied de la gare de Lens. Un parking vélo surveillé est installé devant l'entrée principale.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">Les enfants peuvent-ils venir ?</summary>
+            <p class="faq__answer">Bien sûr. L'entrée est gratuite pour les moins de 8 ans et un espace « Mini Joueurs » propose des jeux adaptés dès 5 ans. Les jeux classés PEGI 16 et 18 sont regroupés dans une zone contrôlée.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">Peut-on se restaurer sur place ?</summary>
+            <p class="faq__answer">Oui, quatre food-trucks locaux sont présents les deux jours, avec au moins une option végétarienne chacun.</p>
+          </details>
+        </div>
+
+        <aside class="help" aria-label="Contact de l'accueil">
+          <article class="card">
+            <img class="card__media" src="img/nadia-haddad.svg" width="320" height="320" alt="Portrait pixel art de Nadia Haddad : longs cheveux bruns, t-shirt bleu ciel, sur fond violet.">
+            <h3 class="card__name">Nadia Haddad</h3>
+            <p class="card__role">Responsable de l'accueil</p>
+            <p class="card__bio">Votre question n'est pas dans la liste ? Nadia vous répond sous 48 h, du lundi au vendredi.</p>
+            <a class="card__link" href="mailto:accueil@respawn-expo.example">Écrire à l'accueil</a>
+          </article>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="site-footer__inner container">
+      <div class="site-footer__block">
+        <h2 class="site-footer__title">Contact</h2>
+        <address class="site-footer__address">
+          Respawn Expo · Halle Arkadia<br>
+          12 rue des Bornes, 62300 Lens<br>
+          <a href="mailto:contact@respawn-expo.example">contact@respawn-expo.example</a>
+        </address>
+      </div>
+      <div class="site-footer__block">
+        <h2 class="site-footer__title">Réseaux</h2>
+        <ul class="site-footer__links" role="list">
+          <li><a href="https://www.instagram.com/respawn.expo.example/">Instagram</a></li>
+          <li><a href="https://www.twitch.tv/respawnexpoexample">Twitch</a></li>
+          <li><a href="https://discord.com/invite/respawnexpoexample">Discord</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__block">
+        <h2 class="site-footer__title">Crédits</h2>
+        <ul class="site-footer__credits" role="list">
+          <li>Police des titres : Pixelify Sans (Stefie Justprince), licence SIL Open Font, via Google Fonts.</li>
+          <li>Texte courant : police système de votre appareil.</li>
+          <li>Portraits et manette : illustrations pixel art SVG créées pour le projet.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="site-footer__legal container">Événement fictif — projet étudiant, module CSS avancé. Noms, lieux et intervenants sont inventés.</p>
+  </footer>
+
+</body>
+</html>

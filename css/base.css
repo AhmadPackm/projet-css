@@ -1,0 +1,81 @@
+/* ==========================================================================
+   base.css — Layer « base »
+   Rôle : styles par défaut des ÉLÉMENTS HTML (body, titres, liens, focus…).
+   Pas de classes ici : seulement des sélecteurs d'éléments, :where(), :is().
+   Uniquement des tokens SÉMANTIQUES.
+   ========================================================================== */
+
+@layer base {
+  html {
+    /* Les ancres ne passent pas sous l'en-tête collant (desktop) */
+    scroll-padding-block-start: var(--header-offset);
+
+    /* Défilement doux seulement si l'utilisateur accepte le mouvement */
+    @media (prefers-reduced-motion: no-preference) {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    line-height: 1.6;
+    /* Les couleurs suivent la bascule de thème en douceur (pas de mouvement) */
+    transition: background-color var(--duration-base) var(--ease-out),
+      color var(--duration-base) var(--ease-out);
+  }
+
+  /* :where() → spécificité nulle : les composants surchargent sans effort */
+  :where(h1, h2, h3) {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: var(--font-size-h1);
+  }
+
+  h2 {
+    font-size: var(--font-size-h2);
+    margin-block-end: var(--space-4);
+  }
+
+  h3 {
+    font-size: var(--font-size-h3);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: var(--color-accent);
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 2px;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  ::selection {
+    background-color: var(--color-highlight);
+    color: var(--color-on-highlight);
+  }
+
+  /* Exigence 7 : un focus TOUJOURS visible au clavier, sur tous les
+     éléments interactifs (liens, boutons, summary, case à cocher).
+     :is() regroupe les éléments qui gardent un fond propre au focus. */
+  :focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+
+  :is(summary, input):focus-visible {
+    outline-offset: 4px;
+  }
+}

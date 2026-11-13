@@ -1,0 +1,133 @@
+/* ==========================================================================
+   tokens.css — Design tokens (rangés dans le layer « base »)
+   --------------------------------------------------------------------------
+   Deux niveaux :
+   1. PRIMITIFS : valeurs brutes nommées d'après ce qu'elles SONT
+      (--color-pink-600, --space-4…). Jamais utilisés dans les composants.
+   2. SÉMANTIQUES : rôles nommés d'après ce qu'ils FONT (--color-surface,
+      --color-accent, --space-section…). Les seuls utilisés dans layout.css
+      et components.css.
+   Identité « Respawn Expo » : nuit violette + néons rose / cyan / vert,
+   ombres décalées « pixel » comme dans les interfaces de jeux rétro.
+   ========================================================================== */
+
+@layer base {
+  :root {
+    /* ---------- 1. Primitifs ---------------------------------------- */
+
+    /* Palette — contrastes vérifiés (voir README, exigence 7) */
+    --color-white: #ffffff;
+    --color-paper-50: #f7f5ff;
+    --color-paper-100: #ece8fb;
+    --color-paper-300: #c9c2ea;
+    --color-ink-950: #0d0b1a;
+    --color-ink-900: #15122b;
+    --color-ink-850: #1a1633;
+    --color-ink-800: #221d40;
+    --color-ink-700: #2f2858;
+    --color-ink-600: #4e4770;
+    --color-ink-200: #b9b1de;
+    --color-pink-700: #b0125f;
+    --color-pink-400: #ff5cab;
+    --color-cyan-700: #00677a;
+    --color-cyan-300: #4ee6ff;
+    --color-lime-700: #3d6b00;
+    --color-lime-400: #b6ff3b;
+    --color-yellow-300: #ffd23f;
+
+    /* Échelle d'espacements (base 0.25rem) */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-24: 6rem;
+
+    /* Rayons : petits et nets, esthétique pixel */
+    --radius-0: 0;
+    --radius-s: 0.25rem;
+    --radius-m: 0.5rem;
+
+    /* Durées et courbes */
+    --duration-100: 150ms;
+    --duration-200: 250ms;
+    --duration-400: 600ms;
+    --ease-out-quart: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --ease-steps: steps(2, jump-none);
+
+    /* Familles de polices (2 familles maximum) */
+    --font-pixel: "Pixelify Sans", "Courier New", monospace;
+    --font-system: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+    /* ---------- 2. Sémantiques -------------------------------------- */
+
+    /* Indispensable pour que light-dark() bascule et que les éléments
+       natifs (case à cocher, barres de défilement) suivent le thème. */
+    color-scheme: light dark;
+
+    /* Couleurs : light-dark(thème clair, thème sombre) */
+    --color-surface: light-dark(var(--color-paper-50), var(--color-ink-950));
+    --color-surface-alt: light-dark(var(--color-paper-100), var(--color-ink-850));
+    --color-surface-raised: light-dark(var(--color-white), var(--color-ink-800));
+    --color-text: light-dark(var(--color-ink-900), var(--color-paper-50));
+    --color-text-muted: light-dark(var(--color-ink-600), var(--color-ink-200));
+    --color-accent: light-dark(var(--color-pink-700), var(--color-pink-400));
+    --color-on-accent: light-dark(var(--color-white), var(--color-ink-950));
+    --color-accent-2: light-dark(var(--color-cyan-700), var(--color-cyan-300));
+    --color-highlight: var(--color-yellow-300);
+    --color-on-highlight: var(--color-ink-950);
+    --color-border: light-dark(var(--color-paper-300), var(--color-ink-700));
+    --color-border-strong: var(--color-text-muted);
+    --color-shadow: light-dark(var(--color-ink-900), var(--color-pink-400));
+    --color-focus: light-dark(var(--color-lime-700), var(--color-lime-400));
+
+    /* Typographie fluide : clamp(minimum, valeur préférée, maximum) */
+    --font-display: var(--font-pixel);
+    --font-body: var(--font-system);
+    --font-size-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.95rem);
+    --font-size-body: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    --font-size-h3: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
+    --font-size-h2: clamp(1.75rem, 1.3rem + 2vw, 3rem);
+    --font-size-h1: clamp(2.5rem, 1.4rem + 5.5vw, 6rem);
+    --font-size-price: clamp(2rem, 1.6rem + 1.5vw, 2.75rem);
+
+    /* Espacements sémantiques */
+    --space-section: clamp(var(--space-12), 6vw + 1rem, var(--space-24));
+    --space-gutter: var(--space-4);
+    --space-card: var(--space-4);
+    --space-stack: var(--space-3);
+
+    /* Formes et effets */
+    --radius-card: var(--radius-m);
+    --radius-control: var(--radius-s);
+    --border-width: 2px;
+    --shadow-pixel: 4px 4px 0 var(--color-shadow);
+    --shadow-pixel-hover: 6px 6px 0 var(--color-shadow);
+
+    /* Mouvement */
+    --duration-fast: var(--duration-100);
+    --duration-base: var(--duration-200);
+    --duration-slow: var(--duration-400);
+    --ease-out: var(--ease-out-quart);
+    --ease-retro: var(--ease-steps);
+
+    /* Décalage des ancres sous l'en-tête collant (desktop) */
+    --header-offset: var(--space-24);
+  }
+
+  /* ---------- Bascule de thème CSS-only (bonus technique) -------------
+     La case #theme-toggle INVERSE le thème courant : si le système est
+     clair, elle force le sombre ; si le système est sombre, elle force
+     le clair. Changer color-scheme suffit : tous les light-dark()
+     des tokens sémantiques basculent d'un coup. */
+  :root:has(#theme-toggle:checked) {
+    color-scheme: dark;
+
+    @media (prefers-color-scheme: dark) {
+      color-scheme: light;
+    }
+  }
+}

@@ -1,0 +1,249 @@
+/* ==========================================================================
+   layout.css — Layer « layout »
+   Rôle : la MISE EN PAGE (conteneurs, en-tête, grilles des sections,
+   footer). Les composants (cartes, boutons, offres…) sont dans
+   components.css.
+   Mobile-first : les styles de base visent 320 px, puis les media queries
+   en (width >= …) élargissent. Points de rupture : 48rem (tablette) et
+   64rem (desktop).
+   ========================================================================== */
+
+@layer layout {
+  /* ---------- Conteneur et sections ------------------------------------ */
+
+  /* Largeur max 72rem, marge latérale minimale de 1rem de chaque côté */
+  .container {
+    inline-size: min(100% - 2 * var(--space-gutter), 72rem);
+    margin-inline: auto;
+  }
+
+  .section {
+    padding-block: var(--space-section);
+  }
+
+  .section--alt {
+    background-color: var(--color-surface-alt);
+  }
+
+  .section__intro {
+    max-inline-size: 60ch;
+    margin-block-end: var(--space-8);
+    color: var(--color-text-muted);
+  }
+
+  /* ---------- En-tête -------------------------------------------------- */
+
+  /* Mobile : en-tête statique (il ne mange pas l'écran en hauteur).
+     Desktop : en-tête collant. */
+  .site-header {
+    border-block-end: var(--border-width) solid var(--color-border);
+    background-color: var(--color-surface);
+
+    @media (width >= 64rem) {
+      position: sticky;
+      inset-block-start: 0;
+      z-index: 10;
+    }
+  }
+
+  /* Flexbox 1D : logo, navigation et bascule passent à la ligne si besoin */
+  .site-header__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3) var(--space-6);
+    padding-block: var(--space-3);
+  }
+
+  /* ---------- Hero : grid-template-areas (exigence 2) ------------------ */
+
+  /* Mobile : une colonne, le visuel après les boutons. */
+  .hero {
+    padding-block: var(--space-section);
+    overflow: clip; /* le décor ne crée jamais de défilement horizontal */
+  }
+
+  .hero__inner {
+    display: grid;
+    gap: var(--space-4);
+    grid-template-areas:
+      "kicker"
+      "title"
+      "info"
+      "actions"
+      "media";
+
+    /* Desktop : le visuel occupe toute la colonne de droite */
+    @media (width >= 48rem) {
+      grid-template-columns: 3fr 2fr;
+      column-gap: var(--space-8);
+      align-items: center;
+      grid-template-areas:
+        "kicker  media"
+        "title   media"
+        "info    media"
+        "actions media";
+    }
+  }
+
+  .hero__kicker { grid-area: kicker; }
+  .hero__title { grid-area: title; }
+  .hero__info { grid-area: info; }
+  .hero__actions { grid-area: actions; }
+  .hero__media { grid-area: media; }
+
+  /* ---------- Programme : grid-template-areas + subgrid --------------- */
+
+  /* Mobile : titre puis les deux jours empilés. */
+  .programme {
+    display: grid;
+    gap: var(--space-4) var(--space-8);
+    grid-template-areas:
+      "titre"
+      "jour1"
+      "jour2";
+
+    /* Desktop : jours côte à côte. Chaque jour occupe 5 pistes (titre du
+       jour + 4 créneaux) : les zones "jour1"/"jour2" sont répétées sur
+       5 lignes pour que .day puisse hériter de ces lignes en subgrid. */
+    @media (width >= 48rem) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "titre titre"
+        "jour1 jour2"
+        "jour1 jour2"
+        "jour1 jour2"
+        "jour1 jour2"
+        "jour1 jour2";
+    }
+  }
+
+  .programme__head { grid-area: titre; }
+  .day--1 { grid-area: jour1; }
+  .day--2 { grid-area: jour2; }
+
+  .day {
+    display: grid;
+    gap: var(--space-4);
+
+    /* subgrid (lignes) : le créneau n°2 du samedi et le n°2 du dimanche
+       partagent la même ligne du parent → ils restent alignés même si un
+       titre de créneau est plus long d'un côté. */
+    @media (width >= 48rem) {
+      grid-template-rows: subgrid;
+    }
+  }
+
+  /* La liste des créneaux : 2 colonnes (horaire | contenu) que chaque
+     créneau récupère en subgrid → toutes les heures sont dans une
+     colonne de même largeur. */
+  .day__list {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: var(--space-4);
+
+    @media (width >= 48rem) {
+      grid-row: span 4;
+      grid-template-rows: subgrid;
+    }
+  }
+
+  /* ---------- Intervenants --------------------------------------------- */
+
+  /* Container query — contexte n°1 : le bandeau « invitée d'honneur »,
+     aussi large que le contenu de la section (≈ 18rem en mobile, jusqu'à
+     72rem en desktop). */
+  .spotlight {
+    container: card / inline-size;
+    margin-block-end: var(--space-8);
+  }
+
+  /* Grille fluide : autant de colonnes de 15rem minimum que possible.
+     min(100%, 15rem) évite tout débordement à 320 px. */
+  .speakers__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    gap: var(--space-6);
+  }
+
+  /* subgrid : chaque élément de liste occupe 5 lignes de la grille
+     (image, nom, rôle, bio, lien) et les transmet à la carte.
+     Pas de container-type ici : il impose une containment de layout
+     qui DÉSACTIVE le subgrid (constaté en test). La container query
+     de .card s'exerce donc dans .spotlight et .help. */
+  .speakers__item {
+    display: grid;
+    grid-row: span 5;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+
+  /* ---------- Billetterie ---------------------------------------------- */
+
+  .offers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+    gap: var(--space-8) var(--space-6);
+    align-items: stretch;
+    padding-block-start: var(--space-4); /* place pour le badge qui dépasse */
+  }
+
+  /* ---------- FAQ ------------------------------------------------------ */
+
+  /* 2e grille à zones nommées. Mobile et tablette : questions puis
+     encart d'aide en dessous (pleine largeur). Desktop (≥ 64rem) :
+     l'encart passe dans une colonne étroite à droite. */
+  .faq-layout {
+    display: grid;
+    gap: var(--space-6) var(--space-8);
+    grid-template-areas:
+      "titre"
+      "liste"
+      "aide";
+
+    @media (width >= 64rem) {
+      grid-template-columns: 2fr 1fr;
+      align-items: start;
+      grid-template-areas:
+        "titre titre"
+        "liste aide";
+    }
+  }
+
+  .faq-layout__title { grid-area: titre; margin-block-end: 0; }
+  .faq { grid-area: liste; }
+  .help { grid-area: aide; }
+
+  .faq {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  /* Container query — contexte n°2 : l'encart d'aide. Large en
+     tablette (pleine largeur → carte horizontale), étroit en desktop
+     (colonne de droite ≈ 22rem → carte verticale) : la carte réagit à
+     la largeur de SON conteneur, pas à celle de l'écran. */
+  .help {
+    container: card / inline-size;
+  }
+
+  /* ---------- Footer --------------------------------------------------- */
+
+  .site-footer {
+    padding-block: var(--space-12) var(--space-8);
+    border-block-start: var(--border-width) solid var(--color-border);
+    background-color: var(--color-surface);
+  }
+
+  /* Flexbox avec retour à la ligne : 1 colonne en mobile, 3 en desktop */
+  .site-footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+  }
+
+  .site-footer__block {
+    flex: 1 1 14rem;
+  }
+}
