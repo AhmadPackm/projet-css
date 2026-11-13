@@ -3,8 +3,7 @@
 Site vitrine d'un salon du jeu vidéo fictif. Projet du module CSS avancé.
 
 - **Auteur** : AIT AMY Ahmad
-- **Dépôt** : https://github.com/AhmadPackm/respawn-expo
-- **Convention de nommage** : BEM (`.bloc__element--variante`), utilitaires préfixés `u-`
+- **Dépôt** : https://github.com/AhmadPackm/projet-css
 
 ## Localisation des exigences
 
@@ -34,6 +33,4 @@ Site vitrine d'un salon du jeu vidéo fictif. Projet du module CSS avancé.
 | `:focus-visible` | `css/base.css:73` |
 | Contrastes AA (2 thèmes) | `css/tokens.css:72` |
 | Images avec `alt` | `index.html:148` |
-
-Contrastes vérifiés : texte 16,9:1 (clair) et 18:1 (sombre), accent 6,3:1 et 6,8:1. Aucun `!important`.
 
