@@ -37,19 +37,3 @@ Site vitrine d'un salon du jeu vidéo fictif. Projet du module CSS avancé.
 
 Contrastes vérifiés : texte 16,9:1 (clair) et 18:1 (sombre), accent 6,3:1 et 6,8:1. Aucun `!important`.
 
-## Validateur W3C
-
-Avertissements possibles sur les syntaxes récentes (nesting, `light-dark()`, `@container`, `subgrid`, `text-wrap`, `animation-timeline`) : elles sont valides et supportées par les navigateurs récents.
-
-## JavaScript
-
-Aucun.
-
-## IA
-
-Claude (Anthropic) utilisé pour aider à écrire le code et les textes.
-
-## Crédits
-
-- Police Pixelify Sans (Google Fonts, licence SIL OFL)
-- Illustrations pixel art SVG créées pour le projet
