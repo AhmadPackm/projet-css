@@ -49,7 +49,7 @@ Avertissements possibles sur les syntaxes récentes (nesting, `light-dark()`, `@
 
 ## Utilisation de l'IA
 
-Claude (Anthropic) a été utilisé pour générer une première version du code HTML/CSS, des textes fictifs et des illustrations SVG, ainsi que pour vérifier les contrastes et le rendu à 320, 800 et 1440 px.
+Claude a été utilisé pour m'assister sur du code HTML/CSS, des textes fictifs et des illustrations SVG, ainsi que pour vérifier les contrastes et le rendu à 320, 800 et 1440 px.
 
 ## Crédits
 
